@@ -1,20 +1,24 @@
 console.log("Welcome to Gambling Simulation");
 
 const betEveryGame = 1;
-const stakeEveryDay = 100;
+let stakeEveryDay = 100;
 
-
-const WINNER = 1;
 const LOOSER = 0;
 
-function winnerDecider() {
+let limitPercentage = 50;
+let winingAmountToResign = ((stakeEveryDay * limitPercentage / 100 + stakeEveryDay));
+let loosingAmoutToResign = ((stakeEveryDay - stakeEveryDay * limitPercentage / 100));
 
+console.log("Maximum amount a player can win :" + winingAmountToResign);
+console.log("Minimum amount a player can be left with :" + loosingAmoutToResign);
+
+while (stakeEveryDay < winingAmountToResign && stakeEveryDay > loosingAmoutToResign) {
     let decider = Math.floor(Math.random() * 2);
-    if (decider == 0) {
-        console.log ("Lost");
+    if (decider == LOOSER) {
+        stakeEveryDay = ((stakeEveryDay + betEveryGame));
     }
-    else
-        console.log("Won")    
+    else {
+        stakeEveryDay = ((stakeEveryDay - betEveryGame));
+    }
 }
-
-winnerDecider();
+console.log("Final amout today with player :: " + stakeEveryDay + "Rs");
