@@ -5,7 +5,8 @@ let stakeEveryDay = 100;
 let day =1;
 var totalAmount = 0;
 let totalDays = 20;
-
+let wins =0;
+let loss =0;
 const LOOSER = 0;
 
 let limitPercentage = 50;
@@ -31,9 +32,13 @@ for (let day = 0; day < totalDays; day++) {
     stakeCalculator();
     if (stakeEveryDay == winingAmountToResign) {
         totalAmount = (totalAmount+limitValue);
+        (wins++);
     }
     else{
         totalAmount = (totalAmount - limitValue);
+        (loss++);
     }
 }
 console.log("Total amount won or loss == " + totalAmount);
+console.log("Total wins = "+ wins);
+console.log("Total loss = "+ loss);
